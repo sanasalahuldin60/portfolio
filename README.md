@@ -4,7 +4,6 @@ Professional portfolio showcasing my work in WordPress, Business Websites, and D
 Includes custom themes, plugins, and projects built with Brilliant Directories & Voxel.  
 Focused on creating fast, modern, and SEO-friendly websites.  
 
----
 
 ## My Work  
 
@@ -12,7 +11,6 @@ Focused on creating fast, modern, and SEO-friendly websites.
 Portfolio images will appear here automatically.
 <!-- PORTFOLIO-END -->
 
----
 
 ## Skills  
 
@@ -21,7 +19,6 @@ Portfolio images will appear here automatically.
 - WooCommerce & E-Commerce Stores  
 - SEO-Friendly & Fast Loading Websites  
 
----
 
 ## Contact  
 
