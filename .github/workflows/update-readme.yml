@@ -1,10 +1,10 @@
-name: Update Portfolio Grid
+name: Update portfolio grid
 
 on:
   push:
-    paths:
-      - "portfolio/**"   # run only when images are added/changed in portfolio folder
-  workflow_dispatch:      # allow manual trigger
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,28 +16,29 @@ jobs:
 
       - name: Generate portfolio grid
         run: |
-          echo "<!-- PORTFOLIO-START -->" > portfolio_section.md
-          echo "<div align='center'>" >> portfolio_section.md
-          count=0
-          for img in portfolio/*.png; do
-            raw_url="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/main/$img"
-            echo "<img src=\"$raw_url\" width=\"250\" style=\"margin:10px;\">" >> portfolio_section.md
-            count=$((count+1))
-            if [ $((count % 3)) -eq 0 ]; then
-              echo "<br>" >> portfolio_section.md
-            fi
+          echo '<table>' > portfolio-grid.md
+          i=0
+          for img in portfolio/*.{png,PNG,jpg,JPG,jpeg,JPEG,gif,GIF}; do
+            [ -e "$img" ] || continue
+            if [ $((i % 3)) -eq 0 ]; then echo '<tr>' >> portfolio-grid.md; fi
+            echo "<td><img src=\"$img\" width=\"200\"></td>" >> portfolio-grid.md
+            if [ $((i % 3)) -eq 2 ]; then echo '</tr>' >> portfolio-grid.md; fi
+            i=$((i + 1))
           done
-          echo "</div>" >> portfolio_section.md
-          echo "<!-- PORTFOLIO-END -->" >> portfolio_section.md
+          if [ $((i % 3)) -ne 0 ]; then echo '</tr>' >> portfolio-grid.md; fi
+          echo '</table>' >> portfolio-grid.md
 
-      - name: Update README
+      - name: Update README.md
         run: |
-          sed -i '/<!-- PORTFOLIO-START -->/,/<!-- PORTFOLIO-END -->/c\<!-- PORTFOLIO-START -->\n'"$(cat portfolio_section.md)"'\n<!-- PORTFOLIO-END -->' README.md
+          sed -i '/<!-- PORTFOLIO-START -->/,/<!-- PORTFOLIO-END -->/{
+            /<!-- PORTFOLIO-START -->/r portfolio-grid.md
+            /<!-- PORTFOLIO-START -->/!{/<!-- PORTFOLIO-END -->/!d}
+          }' README.md
 
       - name: Commit changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add README.md
-          git commit -m "Update portfolio grid" || echo "No changes to commit"
+          git commit -m "Auto-update portfolio grid" || echo "No changes to commit"
           git push
