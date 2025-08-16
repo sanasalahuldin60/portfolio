@@ -10,19 +10,17 @@ Focused on creating fast, modern, and SEO-friendly websites.
 <!-- PORTFOLIO-START -->
 <table>
   <tr>
-    <td><img src="P1.png" width="250"></td>
-    <td><img src="P2.png" width="250"></td>
-    <td><img src="P3.png" width="250"></td>
+    <td><img src="P1.jpg" width="250"></td>
+    <td><img src="P2.jpg" width="250"></td>
+    <td><img src="P3.jpg" width="250"></td>
   </tr>
   <tr>
-    <td><img src="P4.png" width="250"></td>
-    <td><img src="P5.png" width="250"></td>
-    <td><img src="P6.png" width="250"></td>
+    <td><img src="P4.jpg" width="250"></td>
+    <td><img src="P5.jpg" width="250"></td>
+    <td><img src="P6.jpg" width="250"></td>
   </tr>
   <tr>
-    <td><img src="P7.png" width="250"></td>
-    <td><img src="P8.png" width="250"></td>
-    <td><img src="P9.png" width="250"></td>
+    <td><img src="P7.jpg" width="250"></td>
   </tr>
 </table>
 <!-- PORTFOLIO-END -->
