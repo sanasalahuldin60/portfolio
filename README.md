@@ -8,7 +8,8 @@ Focused on creating fast, modern, and SEO-friendly websites.
 ## My Work  
 
 <!-- PORTFOLIO-START -->
-Portfolio images will appear here automatically.
+<table>
+</table>
 <!-- PORTFOLIO-END -->
 
 
